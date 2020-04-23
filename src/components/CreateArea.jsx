@@ -1,7 +1,18 @@
 import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from '@material-ui/icons/Close';
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  closeIcon: {
+    position: "absolute",
+		right: 5,
+		top: 5,
+
+  },
+});
 
 // Find the function to set isExpanded to false when clicked out
 
@@ -11,6 +22,7 @@ function CreateArea(props) {
 		title: "",
 		content: ""
 	});
+	const classes = useStyles(props);
 
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -36,6 +48,10 @@ function CreateArea(props) {
 		setExpanded(true);
 	}
 
+	function collapse() {
+		setExpanded(false);
+	}
+
 	return (
 		<div>
 			<form className="create-note">
@@ -52,13 +68,16 @@ function CreateArea(props) {
 					onClick={expand}
 					onChange={handleChange}
 					value={note.content}
-					placeholder="Take a note..."
+					placeholder="Write Your Note Here..."
 					rows={isExpanded ? 3 : 1}
 				/>
 				<Zoom in={isExpanded ? true : false}>
 					<Fab onClick={submitNote}>
 						<AddIcon />
 					</Fab>
+				</Zoom>
+				<Zoom  in={isExpanded ? true : false}>
+					<CloseIcon className={classes.closeIcon} onClick={collapse}/>
 				</Zoom>
 			</form>
 		</div>

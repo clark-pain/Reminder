@@ -4,16 +4,23 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    background: '#d63447',
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color: "white",
   },
   title: {
     flexGrow: 1,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 40,
+    fontFamily: 'Roboto Slab',
   },
 }));
 
@@ -22,18 +29,23 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.root}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            MY NOTES
+            KEEPSAKE
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Link href="../Pages/list" to={"../Pages/list"}>
+            Logout
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
+// <Link to={'../Pages/List'}>
+// // <Button variant="outlined">Logout</Button>
+// </Link>
 
 // import React from "react";
 //

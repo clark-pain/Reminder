@@ -6,6 +6,12 @@ function Note(props) {
 		props.onDelete(props.id);
 	}
 
+	var date = new Date().toLocaleDateString("en-US", {
+	    "year": "numeric",
+	    "month": "numeric",
+			"day": "numeric"
+	});
+
 	return (
 		<div className="note">
 			<h1>{props.title}</h1>
@@ -13,6 +19,7 @@ function Note(props) {
 			<button onClick={handleClick}>
 				<DeleteIcon />
 			</button>
+					<div>{date}</div>
 		</div>
 	);
 }
